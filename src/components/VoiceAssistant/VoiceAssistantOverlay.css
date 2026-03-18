@@ -1,0 +1,427 @@
+/* ─── Floating trigger button ──────────────────────────────────────────── */
+.floating-mic-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--gradient-voice-active);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-glow-blue);
+    z-index: 50;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-mic-btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+}
+
+/* ─── Overlay container ───────────────────────────────────────────────── */
+.voice-overlay-container {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 2rem;
+    pointer-events: none;
+}
+
+.voice-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 15, 26, 0.35);
+    backdrop-filter: blur(4px);
+    pointer-events: auto;
+    animation: fadeIn 0.3s ease;
+}
+
+.voice-panel {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    background: rgba(19, 26, 43, 0.92);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0.75rem 0.75rem;
+    padding: 2rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    pointer-events: auto;
+    animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    margin-bottom: 1rem;
+}
+
+.va-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--color-text-secondary);
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.va-close-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* ─── Orb Visualizer ──────────────────────────────────────────────────── */
+.voice-visualizer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.orb {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orb-core {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--gradient-voice-idle);
+    box-shadow: var(--shadow-glow-purple);
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+
+.orb-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(139, 92, 246, 0.4);
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.ring-1 {
+    width: 110%;
+    height: 110%;
+}
+
+.ring-2 {
+    width: 135%;
+    height: 135%;
+}
+
+/* State: idle */
+.orb--idle .orb-core {
+    animation: breathe 4s ease-in-out infinite alternate;
+}
+
+/* State: listening */
+.orb--listening .orb-core {
+    background: var(--gradient-voice-active);
+    box-shadow: var(--shadow-glow-blue);
+}
+
+.orb--listening .ring-1 {
+    border-color: rgba(59, 130, 246, 0.6);
+    animation: ripple 1.5s ease-out infinite;
+}
+
+.orb--listening .ring-2 {
+    border-color: rgba(59, 130, 246, 0.3);
+    animation: ripple 1.5s ease-out infinite 0.4s;
+}
+
+/* State: processing */
+.orb--processing .orb-core {
+    background: linear-gradient(135deg, #10B981, #3B82F6);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+    animation: spin 1.5s linear infinite;
+}
+
+/* State: speaking */
+.orb--speaking .orb-core {
+    background: var(--gradient-voice-active);
+    animation: speakPulse 0.6s ease infinite alternate;
+}
+
+@keyframes breathe {
+    0% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes speakPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.18);
+        box-shadow: 0 0 28px rgba(59, 130, 246, 0.8);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.orb-state-label {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+/* ─── Voice text area ─────────────────────────────────────────────────── */
+.voice-text {
+    text-align: center;
+    width: 100%;
+}
+
+.transcript {
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 6px;
+}
+
+.va-reply {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    transition: color 0.3s;
+}
+
+.va-reply.speaking {
+    color: var(--color-primary);
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+/* ─── Context card ────────────────────────────────────────────────────── */
+.context-card {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.ctx-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--color-text-primary);
+}
+
+.ctx-header svg {
+    color: var(--color-primary);
+}
+
+.ctx-body {
+    padding: 12px 14px;
+}
+
+.ctx-field {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    padding: 8px 10px;
+    border-radius: var(--border-radius-sm);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    display: block;
+}
+
+.ctx-field.active {
+    border-color: var(--color-primary);
+    background: rgba(59, 130, 246, 0.07);
+    color: var(--color-text-primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* ─── Demo command buttons ────────────────────────────────────────────── */
+.demo-commands {
+    width: 100%;
+}
+
+.demo-label {
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.demo-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.demo-cmd {
+    padding: 7px 14px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: var(--border-radius-pill);
+    color: var(--color-text-primary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.demo-cmd:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--color-primary);
+    transform: translateY(-1px);
+}
+
+/* ─── Live mic button in panel ────────────────────────────────────────── */
+.va-mic-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.va-mic-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: var(--border-radius-pill);
+    background: var(--gradient-voice-active);
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: var(--shadow-glow-blue);
+    user-select: none;
+}
+
+.va-mic-btn:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 0 28px rgba(59, 130, 246, 0.6);
+}
+
+.va-mic-btn.va-mic-active {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+    animation: pulse-record 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse-record {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 35px rgba(239, 68, 68, 0.8);
+    }
+}
+
+.va-mic-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.no-speech-msg {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ─── STT mode badge ──────────────────────────────────────────────── */
+.stt-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    color: var(--color-text-secondary);
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: var(--border-radius-pill);
+    padding: 4px 10px;
+    user-select: none;
+}
+
+.stt-switch {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 2px;
+    transition: opacity 0.2s;
+}
+
+.stt-switch:hover {
+    opacity: 0.7;
+}

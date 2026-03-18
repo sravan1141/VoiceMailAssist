@@ -1,0 +1,1512 @@
+/* ─── Layout ─────────────────────────────────────────────────────────── */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.45;
+    animation: floatOrb 12s ease-in-out infinite alternate;
+}
+
+.glow-orb.primary {
+    width: 450px;
+    height: 450px;
+    background: var(--color-primary);
+    top: -120px;
+    left: -100px;
+}
+
+.glow-orb.secondary {
+    width: 350px;
+    height: 350px;
+    background: #8B5CF6;
+    bottom: -80px;
+    right: -80px;
+    animation-delay: -6s;
+}
+
+.glow-orb.tertiary {
+    width: 250px;
+    height: 250px;
+    background: #0EA5E9;
+    bottom: 30%;
+    left: 10%;
+    animation-delay: -3s;
+}
+
+@keyframes floatOrb {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(25px, 25px) scale(1.08);
+    }
+}
+
+/* ─── Auth Card ───────────────────────────────────────────────────────── */
+.auth-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 460px;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.auth-card-wide {
+    max-width: 540px;
+}
+
+.slide-in {
+    animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ─── Landing View ────────────────────────────────────────────────────── */
+.auth-landing {
+    text-align: center;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.brand-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    background: var(--gradient-voice-active);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: var(--shadow-glow-blue);
+    margin-bottom: 0.5rem;
+}
+
+.brand h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: var(--gradient-voice-active);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand p {
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+}
+
+.landing-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.demo-hint {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────────── */
+.primary-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.primary-btn:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow-blue);
+}
+
+.primary-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.primary-btn.large {
+    padding: 16px;
+    font-size: 1.05rem;
+}
+
+.secondary-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--color-text-primary);
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.secondary-btn.large {
+    padding: 16px;
+    font-size: 1.05rem;
+}
+
+.back-btn {
+    align-self: flex-start;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    color: var(--color-text-primary);
+}
+
+.back-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: var(--color-text-primary);
+}
+
+.link-btn {
+    color: var(--color-primary);
+    font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+.link-btn:hover {
+    text-decoration: underline;
+}
+
+.skip-link {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.skip-link:hover {
+    color: var(--color-text-primary);
+}
+
+/* ─── Card Header ─────────────────────────────────────────────────────── */
+.card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-header h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.card-header p {
+    color: var(--color-text-secondary);
+}
+
+/* ─── Status message ──────────────────────────────────────────────────── */
+.status-msg {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: var(--border-radius-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+    animation: slideUpFade 0.3s ease;
+}
+
+.status-success {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--color-success);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-error {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--color-danger);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.status-loading {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--color-primary);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ─── Method Grid (Login) ─────────────────────────────────────────────── */
+.method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.method-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.5rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    color: var(--color-text-primary);
+}
+
+.method-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.method-card:hover:not(:disabled) {
+    background: rgba(59, 130, 246, 0.08);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.method-card:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.method-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s;
+}
+
+.method-card:hover:not(:disabled) .method-icon {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: var(--shadow-glow-blue);
+}
+
+.method-card span {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.method-card small {
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+}
+
+/* ─── Passcode Form ───────────────────────────────────────────────────── */
+.passcode-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.passcode-form label {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrap input,
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-md);
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.input-wrap input {
+    padding-right: 48px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.toggle-pass {
+    position: absolute;
+    right: 12px;
+    color: var(--color-text-secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.toggle-pass:hover {
+    color: var(--color-text-primary);
+}
+
+/* ─── Reg form ────────────────────────────────────────────────────────── */
+.reg-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+/* ─── Step Indicator ──────────────────────────────────────────────────── */
+.step-indicator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+}
+
+.step-dot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    position: relative;
+}
+
+.step-dot:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 28px;
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.step-dot.done::after,
+.step-dot.active::after {
+    background: var(--color-primary);
+}
+
+.dot-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 1;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.step-dot.active .dot-num,
+.step-dot.done .dot-num {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.dot-label {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.step-dot.active .dot-label {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+/* ─── Biometric Cards ─────────────────────────────────────────────────── */
+.reg-biometrics {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.section-hint {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.biometric-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.biometric-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-md);
+    transition: border-color 0.3s;
+}
+
+.biometric-card.done {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.biometric-icon {
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.biometric-card.done .biometric-icon {
+    color: var(--color-success);
+}
+
+.biometric-info {
+    flex-grow: 1;
+}
+
+.biometric-info h4 {
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+.biometric-info p {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+.biometric-action {
+    padding: 8px 16px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.biometric-action:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+}
+
+.biometric-action.done-btn {
+    background: var(--color-success);
+    cursor: default;
+}
+
+/* ─── Gmail Connect ───────────────────────────────────────────────────── */
+.reg-gmail {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.gmail-connect-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-md);
+    transition: border-color 0.3s;
+}
+
+.gmail-connect-card.connected {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.gmail-icon {
+    color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.gmail-connect-card.connected .gmail-icon {
+    color: var(--color-success);
+}
+
+.gmail-info {
+    flex-grow: 1;
+}
+
+.gmail-info h4 {
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+.gmail-info p {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+.google-btn {
+    padding: 8px 16px;
+    background: white;
+    color: #333;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.google-btn:hover {
+    background: #f1f1f1;
+}
+
+.connected-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-success);
+    white-space: nowrap;
+}
+
+/* ─── Auth switch ─────────────────────────────────────────────────────── */
+.auth-switch {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+/* ─── Modals ──────────────────────────────────────────────────────────── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 15, 26, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-panel {
+    width: 100%;
+    max-width: 380px;
+    padding: 0;
+    overflow: hidden;
+    animation: slideUpFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.modal-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.icon-close {
+    color: var(--color-text-secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    transition: all 0.2s;
+}
+
+.icon-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* Face Scanner */
+.face-scan-area {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.face-oval {
+    width: 160px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+.face-oval.scanning {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+.scan-line {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    top: 0;
+    animation: scanDown 1.5s linear infinite;
+}
+
+@keyframes scanDown {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 100%;
+    }
+}
+
+.progress-bar-wrap {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--color-primary);
+    border-radius: 9999px;
+    transition: width 0.1s linear;
+}
+
+.scan-hint {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+/* ─── Webcam video inside face oval ───────────────────────────────────── */
+.face-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transform: scaleX(-1);
+    /* mirror like a selfie cam */
+}
+
+.face-loading-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: rgba(10, 15, 26, 0.7);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+}
+
+.scan-error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.scan-error-state p {
+    font-size: 0.85rem;
+    color: #f87171;
+    text-align: center;
+    max-width: 240px;
+    line-height: 1.4;
+}
+
+/* ─── Recording badge & hint ────────────────────────────────────────── */
+.rec-live {
+    background: #ef4444 !important;
+    animation: pulseDot 0.8s infinite;
+}
+
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.phrase-hint {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+}
+
+.recording-hint {
+    color: #f87171;
+    font-weight: 600;
+}
+
+.scan-success-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.scan-success-state p {
+    font-weight: 600;
+    color: var(--color-success);
+}
+
+/* Voice Recorder */
+.voice-record-area {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.mic-orb {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.1);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.mic-orb.recording {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--color-primary);
+    animation: pulseGlow 1.5s infinite;
+}
+
+.countdown-ring {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phrase-box {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-md);
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.phrase-label {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 4px;
+}
+
+.phrase-text {
+    font-size: 1rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--color-text-primary);
+}
+
+.verifying-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+}
+
+/* ─── Focus accessibility ─────────────────────────────────────────────── */
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .method-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .step-indicator {
+        gap: 0.5rem;
+    }
+
+    .dot-label {
+        display: none;
+    }
+}
+
+/* ─── Divider ─────────────────────────────────────────────────────────── */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text-secondary);
+    font-size: 0.82rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* ─── Google OAuth Button ─────────────────────────────────────────────── */
+.google-oauth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 13px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--border-radius-md);
+    color: var(--color-text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.google-oauth-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.google-oauth-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ─── Google OAuth hero button ────────────────────────────────── */
+.google-oauth-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 15px;
+    background: white;
+    color: #1f1f1f;
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s ease;
+    letter-spacing: 0.01em;
+}
+
+.google-oauth-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+    background: #f8f8f8;
+}
+
+.google-oauth-hero:active {
+    transform: translateY(0);
+}
+
+/* ─── Auth divider ────────────────────────────────────────────── */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text-secondary);
+    font-size: 0.82rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* ─── Alt auth options (passcode / biometric cards) ───────────── */
+.alt-auth-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    animation: slideUpFade 0.3s ease forwards;
+}
+
+/* ─── Biometric quick-login ───────────────────────────────────── */
+.biometric-quick {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Footer note ─────────────────────────────────────────────── */
+.auth-footer-note {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    line-height: 1.5;
+    padding: 0 0.5rem;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   NEW: Voice-First Auth Styles
+   ════════════════════════════════════════════════════════════════ */
+
+/* ─── Back button arrow variant ───────────────────────────────── */
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ─── Brand icon small variant ────────────────────────────────── */
+.brand-icon-wrap.sm {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    font-size: 0.85rem;
+}
+
+/* ─── Landing Step ────────────────────────────────────────────── */
+.landing-step {
+    text-align: center;
+    align-items: center;
+}
+
+.landing-mic-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transition: transform 0.15s;
+}
+
+.landing-mic-area.mis-pulse {
+    animation: missPulse 0.4s ease;
+}
+
+@keyframes missPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.96);
+    }
+}
+
+/* ─── VoiceListener Bubble ────────────────────────────────────── */
+.vl-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 1rem;
+    background: rgba(59, 130, 246, 0.04);
+    border: 1px solid rgba(59, 130, 246, 0.15);
+    border-radius: var(--border-radius-md);
+    width: 100%;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.vl-listening {
+    background: rgba(59, 130, 246, 0.08);
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.12);
+}
+
+.vl-icon-wrap {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vl-rings {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+}
+
+.vl-rings span {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    opacity: 0;
+}
+
+.vl-animate span:nth-child(1) {
+    animation: ripple 2s ease-out infinite;
+}
+
+.vl-animate span:nth-child(2) {
+    animation: ripple 2s ease-out 0.5s infinite;
+}
+
+.vl-animate span:nth-child(3) {
+    animation: ripple 2s ease-out 1s infinite;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+.vl-mic-icon {
+    color: var(--color-primary);
+    position: relative;
+    z-index: 1;
+}
+
+.vl-text {
+    font-size: 0.9rem;
+    text-align: center;
+    min-height: 1.4rem;
+}
+
+.vl-hint {
+    color: var(--color-text-secondary);
+}
+
+.vl-interim {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-style: italic;
+    animation: fadeInUp 0.2s ease;
+}
+
+.vl-error {
+    color: var(--color-danger);
+    font-size: 0.82rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* compact inline version */
+.vl-compact {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+    padding: 4px 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vl-compact.vl-on {
+    color: var(--color-primary);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.vl-interim-inline {
+    color: var(--color-primary);
+    font-style: italic;
+}
+
+.vl-error-inline {
+    color: var(--color-danger);
+}
+
+/* ─── OR Divider ──────────────────────────────────────────────── */
+.or-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+    width: 100%;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+/* ─── Input with leading icon ─────────────────────────────────── */
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-with-icon .input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--color-text-secondary);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.input-with-icon input {
+    padding-left: 40px;
+    width: 100%;
+}
+
+/* ─── Confirm Step ────────────────────────────────────────────── */
+.confirm-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.confirm-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: var(--border-radius-md);
+    width: 100%;
+    text-align: center;
+}
+
+.confirm-label {
+    font-size: 0.82rem;
+    color: var(--color-text-secondary);
+}
+
+.confirm-username {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: 0.5px;
+}
+
+.confirm-btns {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.confirm-btns .primary-btn,
+.confirm-btns .secondary-btn {
+    flex: 1;
+}
+
+/* ─── Login steps ─────────────────────────────────────────────── */
+.login-username-step,
+.login-auth-step {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.reg-username-step {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.reg-action-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* ─── No biometric notice ─────────────────────────────────────── */
+.no-biometric-notice {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: rgba(251, 191, 36, 0.06);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: var(--border-radius-md);
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.no-biometric-notice svg {
+    color: #FBBF24;
+}
+
+/* ─── Gmail Selector ──────────────────────────────────────────── */
+.gmail-selector-step {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.gmail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+}
+
+.gmail-list-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--color-text-primary);
+    width: 100%;
+    text-align: left;
+}
+
+.gmail-list-item:hover:not(:disabled) {
+    background: rgba(59, 130, 246, 0.08);
+    border-color: var(--color-primary);
+    transform: translateX(4px);
+}
+
+.gmail-list-item:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.gmail-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.gmail-addr {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.gmail-label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+    margin-top: 2px;
+}
+
+/* ─── Voice footer hint ───────────────────────────────────────── */
+.vl-footer-hint {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+    justify-content: center;
+}

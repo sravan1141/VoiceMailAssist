@@ -1,0 +1,143 @@
+.app-selector-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #09090b 0%, #18181b 100%);
+    color: #fff;
+    position: relative;
+    padding: 24px;
+}
+
+.selector-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.5);
+    border-radius: 32px;
+    padding: 48px;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+.selector-glass h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.selector-glass p {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 32px;
+}
+
+.app-cards {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+}
+
+.app-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 48px 32px;
+    flex: 1;
+    max-width: 300px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.app-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.app-card.email-card:hover {
+    box-shadow: 0 16px 32px rgba(234, 67, 53, 0.2);
+}
+
+.app-card.whatsapp-card:hover {
+    box-shadow: 0 16px 32px rgba(37, 211, 102, 0.2);
+}
+
+.app-card.whatsapp-card svg {
+    color: #25D366;
+}
+
+.app-card.email-card svg {
+    color: #EA4335;
+}
+
+.app-card h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.app-card p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.listening-pulse {
+    color: #ea4335 !important;
+    animation: flash 1.5s infinite running;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.logout-top {
+    position: absolute;
+    top: 32px;
+    right: 48px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.logout-top:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.mic-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 9999px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 32px;
+}
+
+.mic-trigger-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.mt-4 {
+    margin-top: 16px;
+}

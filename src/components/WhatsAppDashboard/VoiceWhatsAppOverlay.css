@@ -1,0 +1,33 @@
+.va-panel.whatsapp-panel {
+    background: #111b21;
+    border: 1px solid rgba(37, 211, 102, 0.2);
+}
+
+.whatsapp-panel .va-header-title {
+    color: #25D366;
+}
+
+.whatsapp-panel .va-chat-bubble.assistant {
+    background: rgba(37, 211, 102, 0.1);
+    border-left-color: #25D366;
+    color: #fff;
+}
+
+.whatsapp-panel .va-mic-btn.active {
+    background: #128C7E;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+}
+
+.va-draft-preview {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 16px;
+    font-size: 0.9rem;
+}
+
+.va-draft-preview strong {
+    color: #25D366;
+    margin-right: 8px;
+}

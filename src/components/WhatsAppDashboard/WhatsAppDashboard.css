@@ -1,0 +1,104 @@
+.whatsapp-panel {
+    background: radial-gradient(circle at center, rgba(37, 211, 102, 0.1) 0%, transparent 70%), var(--color-bg-secondary);
+    border: 1px solid rgba(37, 211, 102, 0.2);
+}
+
+.chat-messages {
+    scroll-behavior: smooth;
+}
+
+.chat-composer input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.3);
+}
+
+.va-option-chip {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.va-option-chip:hover {
+    background: rgba(37, 211, 102, 0.15);
+    border-color: rgba(37, 211, 102, 0.3);
+    color: white;
+}
+
+.va-options-scroll {
+    max-height: 120px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+/* Contact Card Action Buttons */
+.contact-card:hover .contact-actions {
+    opacity: 1 !important;
+}
+
+.contact-actions .icon-btn {
+    border-radius: 50% !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-actions .icon-btn:hover {
+    transform: scale(1.1);
+}
+
+/* ── AI Suggestion Chips ── */
+.ai-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    padding: 10px 24px 0;
+}
+
+.ai-suggest-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.4);
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.ai-chip {
+    padding: 7px 16px;
+    background: rgba(37, 211, 102, 0.08);
+    border: 1px solid rgba(37, 211, 102, 0.25);
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.ai-chip:hover {
+    background: rgba(37, 211, 102, 0.18);
+    border-color: rgba(37, 211, 102, 0.5);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.ai-suggest-loading {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}

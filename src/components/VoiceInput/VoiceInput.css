@@ -1,0 +1,96 @@
+.voice-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.voice-input-wrap>*:first-child {
+    flex: 1;
+    padding-right: 2.4rem !important;
+}
+
+.voice-input-mic {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 50%;
+    transition: color 0.2s, background 0.2s;
+    padding: 0;
+}
+
+.voice-input-mic:hover {
+    color: #818cf8;
+    background: rgba(129, 140, 248, 0.1);
+}
+
+.voice-input-mic.listening {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.15);
+    animation: mic-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes mic-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(248, 113, 113, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(248, 113, 113, 0);
+    }
+}
+
+/* Waveform bars when listening */
+.mic-waves {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 16px;
+}
+
+.mic-waves span {
+    display: block;
+    width: 3px;
+    border-radius: 2px;
+    background: #f87171;
+    animation: wave-bar 0.8s ease-in-out infinite;
+}
+
+.mic-waves span:nth-child(1) {
+    height: 8px;
+    animation-delay: 0s;
+}
+
+.mic-waves span:nth-child(2) {
+    height: 14px;
+    animation-delay: 0.15s;
+}
+
+.mic-waves span:nth-child(3) {
+    height: 8px;
+    animation-delay: 0.3s;
+}
+
+@keyframes wave-bar {
+
+    0%,
+    100% {
+        transform: scaleY(0.4);
+    }
+
+    50% {
+        transform: scaleY(1);
+    }
+}

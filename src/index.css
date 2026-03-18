@@ -1,0 +1,133 @@
+:root {
+  /* Brand Colors - Deep, Accessible, Professional */
+  --color-bg-primary: #0A0F1A;     /* Very dark blue/black */
+  --color-bg-secondary: #131A2B;   /* Slightly lighter background */
+  --color-bg-tertiary: #1C263B;    /* Cards / Modals */
+
+  /* Text Colors - High Contrast */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #94A3B8; /* Slate 400 */
+  --color-text-accent: #60A5FA;    /* Bright blue for links/highlights */
+
+  /* Semantic Colors */
+  --color-primary: #3B82F6;        /* Standard Blue */
+  --color-primary-hover: #2563EB;
+  --color-success: #10B981;
+  --color-danger: #EF4444;
+  --color-warning: #F59E0B;
+
+  /* Voice Assistant Branding - Gradients */
+  --gradient-voice-active: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+  --gradient-voice-idle: linear-gradient(135deg, #1E3A8A 0%, #4C1D95 100%);
+  --gradient-border: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.0));
+
+  /* Typography */
+  --font-family-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Space / Layout */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --border-radius-sm: 0.375rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-pill: 9999px;
+
+  /* Shadows / Effects */
+  --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-glow-blue: 0 0 15px rgba(59, 130, 246, 0.4);
+  --shadow-glow-purple: 0 0 15px rgba(139, 92, 246, 0.4);
+  --glass-bg: rgba(28, 38, 59, 0.6);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Base Reset & Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Global Utilities */
+a {
+  color: var(--color-text-accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Shared Premium Components */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Accessible Focus States */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(59, 130, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
